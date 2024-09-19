@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "vector": "cpp",
+        "map": "cpp",
+        "iostream": "cpp",
+        "xutility": "cpp",
+        "utility": "cpp",
+        "algorithm": "cpp",
+        "queue": "cpp",
+        "unordered_map": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled",
+    "cSpell.words": [
+        "forn",
+        "parth",
+        "riddhi",
+        "umsd",
+        "vinay",
+        "vpii"
+    ]
+}
