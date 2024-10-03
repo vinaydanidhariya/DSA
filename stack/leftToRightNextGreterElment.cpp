@@ -9,14 +9,17 @@ vector<long long> nextLargerElement(vector<long long> nums, int n)
     vector<long long> ans(n, -1);
     for (int i = 0; i < nums.size(); i++)
     {
-        while (!st.empty() && nums[i]>nums[st.top()])
+        while (!st.empty() && nums[i] > nums[st.top()])
         {
-            
+            ans[st.top()] = nums[i];
+            st.pop();
         }
-        
+        if (!st.empty())
+        {
+            ans[st.top()] = -1;
+        }
+        st.push(i);
     }
-    
-
     return ans;
 }
 
@@ -30,6 +33,6 @@ int main()
     {
         cout << numNew[i];
     }
-
+    cout<<"\n";
     return 0;
 }
