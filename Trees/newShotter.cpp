@@ -1,41 +1,56 @@
 #include <iostream>
 #include <vector>
-using namespace std;
 
-int findAlive(vector<int> nums, int start)
-{
-    // Base case: If only one person remains, return that person
-    if (nums.size() == 1)
-    {
-        cout << "Last person alive: " << nums[0] << endl;
-        return nums[0];
+void printRound(const std::vector<int>& people, int round) {
+    std::cout << "Round " << round << ": ";
+    for (int person : people) {
+        std::cout << person << " ";
     }
-
-    vector<int> newNums;
-    
-    // Loop to simulate elimination of every second person
-    for (int i = start; i < nums.size(); i += 2)
-    {
-        newNums.push_back(nums[i]);
-    }
-
-    // Display current round of survivors
-    for (int num : newNums)
-        cout << num << " ";
-    cout << endl;
-
-    // Determine the starting index for the next round
-    if ((nums.size() - start) % 2 == 0)
-        start = 1; // if we have eliminated an even number, start from the second person
-    else
-        start = 0; // otherwise, start from the first person
-    
-    return findAlive(newNums, start);
+    std::cout << std::endl;
 }
 
-int main()
-{
-    vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    findAlive(nums, 0); // Start elimination from index 0
+int josephus(int n) {
+    std::vector<int> people(n);
+    for (int i = 0; i < n; ++i) {
+        people[i] = i + 1;
+    }
+
+    int index = 0;
+    int round = 1;
+
+    while (people.size() > 1) {
+        // Print the current round
+        printRound(people, round);
+
+        // Calculate the index of the next person to be eliminated
+        index = (index + 1) % people.size();
+
+        // Print who kills whom
+        std::cout << "Person " << people[(index - 1 + people.size()) % people.size()]
+                << " kills Person " << people[index] << std::endl;
+
+        // Remove the person from the vector
+        people.erase(people.begin() + index);
+
+        // If the index is at the end of the vector, wrap it around to the beginning
+        if (index == people.size()) {
+            index = 0;
+        }
+
+        // Increment the round
+        round++;
+    }
+
+    // Print the final round
+    printRound(people, round);
+
+    // The last person remaining
+    return people.front();
+}
+
+int main() {
+    int n = 10;
+    int last_person_standing = josephus(n);
+    std::cout << "The last person standing is Person " << last_person_standing << std::endl;
     return 0;
 }

@@ -25,13 +25,13 @@ vector<long long> nextLargerElement(vector<long long> nums, int n)
 
 int main()
 {
-    vector<long long> nums = {1, 3, 2, 4};
+    vector<long long> nums = {13,7,6,12};
     // 3 4 4 -1
     int n = 4;
     vector<long long> numNew = nextLargerElement(nums, n);
     for (int i = 0; i < numNew.size(); i++)
     {
-        cout << numNew[i];
+        cout << numNew[i]<<" ";
     }
     cout<<"\n";
     return 0;

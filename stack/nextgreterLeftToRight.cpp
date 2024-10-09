@@ -33,6 +33,7 @@ vector<long long> nextLargerElement(vector<long long> nums, int n)
         if (!st.empty())
         {
             NGE[st.top()] = -1;
+            
         }
         st.push(i);
     }
