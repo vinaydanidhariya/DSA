@@ -4,7 +4,7 @@
 using namespace std;
 
 long arrayManipulation(int n, vector<vector<int>> queries) {
- vector<long> v(n + 1);
+vector<long> v(n + 1);
     for (int i = 0; i < queries.size(); i++) {
         v[queries[i][0] - 1] += queries[i][2];
         v[queries[i][1]] -= queries[i][2];
