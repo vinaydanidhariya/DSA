@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#define vi vector<int>
 #define vii vector<int, int>
 using namespace std;
 void printV(vector<int> v)
